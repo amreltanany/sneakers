@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sneaks — Full collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Ranchers&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<style>
+:root{--black:#000;--ink:#424242;--muted:#616161;--faint:#858585;--bg:#fff;--bg-soft:#F5F5F5;--line:#E3E3E3;--chip:#F0F0F0;--blue:#005EFF}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg)}
+body{font-family:'Inter Variable','Inter',sans-serif;color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{border:0;background:none;cursor:pointer}
+
+/* nav (no logo) */
+body>nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:50;height:40px;padding:0 20px;
+  display:flex;align-items:center;gap:14px;border-radius:1000px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);font-size:13px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.9),0 .6px 1.5px -1.5px rgba(0,0,0,.17),0 2.3px 6px -3px rgba(0,0,0,.14),0 10px 26px -4.5px rgba(0,0,0,.02)}
+body>nav a{transition:opacity .2s}body>nav a:hover{opacity:.55}
+body>nav a[aria-current="page"]{font-weight:500}
+
+/* header */
+.top{padding:100px 64px 0;max-width:1344px;margin:0 auto}
+h1{font-weight:400;font-size:32px;line-height:38.4px;letter-spacing:-1.6px}
+.count{font-size:14px;line-height:21px;color:var(--muted);letter-spacing:-.28px;margin-top:6px}
+.count b{font-weight:400;color:#292929;margin-right:4px}
+
+/* grid */
+.grid{max-width:1344px;margin:32px auto 0;padding:0 64px 140px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px 10px}
+.prod{display:block}
+.pimg{position:relative;aspect-ratio:1;background:#F0F0F0;overflow:hidden}
+.pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.pimg .b{opacity:0}
+.prod:hover .b{opacity:1}.prod:hover .a{opacity:0}
+.prod h3{font-weight:400;font-size:16px;line-height:19.2px;letter-spacing:-.48px;margin-top:20px}
+.prod p{font-size:14px;line-height:21px;color:var(--muted);letter-spacing:-.28px;margin-top:4px}
+.prod b{display:block;font-weight:400;font-size:14px;line-height:21px;margin-top:6px;letter-spacing:-.28px;padding-bottom:28px}
+.prod[hidden]{display:none}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:80px 0;font-size:14px}
+
+/* search + filter dock */
+.dock{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:40;width:250px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+  border-radius:26px;overflow:hidden;transition:width .35s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 0 0 1px rgba(0,0,0,.04),0 .6px 1.5px -1.5px rgba(0,0,0,.17),0 2.3px 6px -3px rgba(0,0,0,.14),0 10px 26px -4.5px rgba(0,0,0,.08)}
+.dock.open{width:318px}
+.srow{display:flex;align-items:center;height:47px;padding:0 14px 0 16px;gap:10px}
+.srow svg{width:14px;height:14px;flex:none;stroke:var(--faint);fill:none;stroke-width:1.8;stroke-linecap:round}
+.dock.open .srow svg.mag{stroke:var(--blue)}
+.srow input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:13px;letter-spacing:-.26px}
+.srow input::placeholder{color:var(--faint)}
+.srow .tog{width:28px;height:28px;border-left:1px solid var(--line);border-radius:0;display:grid;place-items:center;padding-left:10px;width:34px}
+.srow .tog svg{transition:transform .3s}
+.dock.open .tog svg{transform:rotate(180deg)}
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.2,.8,.2,1)}
+.dock.open .panel{grid-template-rows:1fr}
+.panel>div{overflow:hidden}
+.inner{padding:2px 16px 16px;border-top:1px solid var(--line);margin:0 0}
+.grp{padding:14px 0;border-bottom:1px solid var(--line)}
+.grp h4{font-weight:400;font-size:12px;color:var(--ink);letter-spacing:-.24px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:28px;padding:0 12px;border-radius:1000px;background:var(--chip);color:var(--faint);font-size:12px;letter-spacing:-.24px;transition:background .2s,color .2s}
+.chip:hover{background:#e6e6e6}
+.chip[aria-pressed="true"]{background:#000;color:#fff}
+.chk{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink);padding:14px 0 12px;cursor:pointer}
+.chk input{appearance:none;width:12px;height:12px;border-radius:3px;border:1px solid var(--faint);display:grid;place-items:center;cursor:pointer}
+.chk input:checked{background:#000;border-color:#000}
+.chk input:checked::after{content:"";width:6px;height:3px;border:solid #fff;border-width:0 0 1.5px 1.5px;transform:rotate(-45deg) translate(1px,-1px)}
+.reset{height:28px;padding:0 12px;border-radius:1000px;background:var(--chip);font-size:12px;letter-spacing:-.24px}
+.reset:hover{background:#e6e6e6}
+.chip:focus-visible,.reset:focus-visible,.tog:focus-visible,.chk input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* footer (same as home) */
+.foot{position:relative;background:#fff;padding-bottom:60px;margin-top:-60px}
+.mark{position:relative;height:640px;max-width:1280px;margin:0 auto}
+.word{position:absolute;left:0;right:0;top:268px;text-align:center;font-family:'Ranchers',sans-serif;font-size:clamp(150px,33vw,420px);line-height:.8;letter-spacing:-.01em;white-space:nowrap}
+.mark img{position:absolute;pointer-events:none}
+.lace{left:50%;top:0;width:1139px;margin-left:-570px}
+.fs1{left:123px;top:213px;width:209px;transform:rotate(-8deg)}
+.fs2{left:930px;top:425px;width:215px;transform:rotate(-6deg)}
+.finfo{max-width:1280px;margin:0 auto;padding:0 64px;display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+.fbrand b{display:block;font-weight:500;font-size:14px}
+.fbrand p{font-size:14px;color:var(--muted);margin-top:14px;letter-spacing:-.28px}
+.fcols{display:flex;gap:56px}
+.fcols div{display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink);letter-spacing:-.28px}
+.fcols b{font-weight:500;color:#000;margin-bottom:4px}
+.fcols a:hover{color:#000}
+.fbar{max-width:1280px;margin:60px auto 0;padding:0 64px;display:flex;justify-content:space-between;font-size:14px;color:var(--ink);letter-spacing:-.28px;position:relative}
+.fbar::before{content:"";position:absolute;left:64px;right:64px;top:-30px;height:1px;background:var(--line)}
+.fbar a{margin-left:20px}
+
+@media (max-width:900px){
+  .top,.grid{padding-left:20px;padding-right:20px}.grid{grid-template-columns:1fr 1fr}
+  .mark{height:380px}.word{top:120px}.lace{width:760px;margin-left:-380px}.fs1,.fs2{display:none}
+  .finfo{flex-direction:column;padding:0 20px}.fbar{padding:0 20px}.fbar::before{left:20px;right:20px}
+}
+@media (max-width:560px){.grid{grid-template-columns:1fr}.dock{width:min(250px,calc(100vw - 32px))}.dock.open{width:min(318px,calc(100vw - 32px))}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <a href="shoes.html" aria-current="page">Shop</a>
+  <a href="index.html#approach">About</a>
+  <a href="index.html#cats">Stores</a>
+</nav>
+
+<header class="top">
+  <h1>Full collection</h1>
+  <p class="count"><b id="count">12</b>results</p>
+</header>
+
+<main class="grid" id="grid"></main>
+
+<div class="dock" id="dock">
+  <div class="srow">
+    <svg class="mag" viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+    <input id="q" type="search" placeholder="Search…" aria-label="Search shoes" autocomplete="off">
+    <button class="tog" id="tog" aria-label="Filters" aria-expanded="false" aria-controls="filters">
+      <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+  <div class="panel"><div>
+    <div class="inner" id="filters" hidden></div>
+  </div></div>
+</div>
+
+<footer class="foot">
+  <div class="mark" aria-hidden="true">
+    <span class="word">SNEAKS</span>
+    <img class="lace" src="img/lace.png" alt="">
+    <img class="fs1" src="img/shoe-orange.png" alt="">
+    <img class="fs2" src="img/shoe-blue.png" alt="">
+  </div>
+  <div class="finfo">
+    <div class="fbrand"><b>Sneaks</b><p>Making high quality shoes since 2012</p></div>
+    <nav class="fcols" aria-label="Footer">
+      <div><b>Support</b><a href="#">Shipping</a><a href="#">Return &amp; Exchange</a><a href="#">Contact</a></div>
+      <div><b>Site</b><a href="index.html">Home</a><a href="shoes.html">Products</a><a href="#">Stores</a><a href="index.html#approach">About</a><a href="#">Magazine</a></div>
+      <div><b>Follow</b><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">YouTube</a><a href="#">X</a></div>
+    </nav>
+  </div>
+  <div class="fbar"><span>© Sneaks. All Rights Reserved</span><span><a href="#">Terms</a><a href="#">Privacy Policy</a></span></div>
+</footer>
+
+<script>
+/* Same three fields the original filters on. cat/gender/best are inferred from the product names (the original site doesn't show them). */
+const P = [
+  ['Addies Kadhi OG','Timeless icon inspired by its football roots.',115,'p1a','p1b','Casual','Unisex',1],
+  ['Nyke Air Flex White',"White Men's Shoes",95,'p2a','p2b','Casual','Male',1],
+  ['Nyke Air Alpha Trainer',"Men's Workout Shoes",90,'p3a','p3b','Sports','Male',1],
+  ['Nyke Air Jet Retro Club',"Men's Shoe",120,'p4a','p4b','Casual','Male',1],
+  ['Addies Handball Shoes Sky Blue','Comfortable Handball Shoes',115,'p5a','p5b','Sports','Unisex',0],
+  ['Addies Kadhi OG Silver','Timeless icon inspired by its football roots.',115,'p6a','p6b','Casual','Unisex',0],
+  ['Addies Supersoft',"Addies Supersoft Women's Running Shoes",210,'p7a','p7b','Running','Female',0],
+  ['Nyke Air Bubble',"Light Weight Men's Shoe",170,'p8a','p8b','Running','Male',0],
+  ['Nyke Air Flex Beige',"Beige Men's Shoes",95,'p9a','p9b','Casual','Male',0],
+  ['Nyke Air Flex Orange',"Orange Men's Shoes",95,'p10a','p9b','Casual','Male',0],
+  ['Nyke Ranger','Ultralight Comfy Shoes',95,'p11a','p11b','Running','Unisex',0],
+  ['Nyke Air Flex Sky Blue',"Orange Men's Shoes",95,'p10a','p9b','Casual','Male',0], // original reuses the orange photos here
+].map(([name, desc, price, a, b, cat, gender, best]) => ({ name, desc, price, a, b, cat, gender, best }));
+
+const RATE = 50; // EGP per original USD price; change here to re-price everything
+const CATS = ['Sports', 'Slides', 'Running', 'Casual'], GENDERS = ['Unisex', 'Male', 'Female'];
+const state = { q: '', cats: new Set(), genders: new Set(), best: false };
+const $ = id => document.getElementById(id);
+
+const grid = $('grid');
+grid.innerHTML = P.map((p, i) => `
+  <a class="prod" href="#" data-i="${i}">
+    <div class="pimg"><img class="a" src="img/${p.a}.png" alt="${p.name}"><img class="b" src="img/${p.b}.png" alt="" loading="lazy"></div>
+    <h3>${p.name}</h3><p>${p.desc}</p><b>EGP ${(p.price * RATE).toLocaleString('en-US')}</b>
+  </a>`).join('') + '<p class="empty" id="empty" hidden>No shoes match these filters.</p>';
+
+$('filters').innerHTML = `
+  <div class="grp"><h4>Categories</h4><div class="chips" data-k="cats">${CATS.map(c => `<button class="chip" aria-pressed="false">${c}</button>`).join('')}</div></div>
+  <div class="grp"><h4>Gender</h4><div class="chips" data-k="genders">${GENDERS.map(c => `<button class="chip" aria-pressed="false">${c}</button>`).join('')}</div></div>
+  <label class="chk"><input type="checkbox" id="best"> Best Seller</label>
+  <button class="reset" id="reset">Reset filters</button>`;
+$('filters').hidden = false;
+
+function render() {
+  const q = state.q.trim().toLowerCase();
+  let n = 0;
+  grid.querySelectorAll('.prod').forEach(el => {
+    const p = P[+el.dataset.i];
+    const ok = (!q || (p.name + ' ' + p.desc).toLowerCase().includes(q))
+      && (!state.cats.size || state.cats.has(p.cat))
+      && (!state.genders.size || state.genders.has(p.gender))
+      && (!state.best || p.best);
+    el.hidden = !ok; n += ok;
+  });
+  $('count').textContent = n;
+  $('empty').hidden = n > 0;
+}
+
+$('q').addEventListener('input', e => { state.q = e.target.value; render(); });
+$('filters').addEventListener('click', e => {
+  const chip = e.target.closest('.chip'); if (!chip) return;
+  const set = state[chip.parentElement.dataset.k], v = chip.textContent;
+  set.has(v) ? set.delete(v) : set.add(v);
+  chip.setAttribute('aria-pressed', set.has(v));
+  render();
+});
+$('best').addEventListener('change', e => { state.best = e.target.checked; render(); });
+$('reset').addEventListener('click', () => {
+  state.q = ''; state.cats.clear(); state.genders.clear(); state.best = false;
+  $('q').value = ''; $('best').checked = false;
+  document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', 'false'));
+  render();
+});
+
+const dock = $('dock');
+function setOpen(o) { dock.classList.toggle('open', o); $('tog').setAttribute('aria-expanded', o); }
+$('tog').addEventListener('click', () => setOpen(!dock.classList.contains('open')));
+$('q').addEventListener('focus', () => setOpen(true));
+addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+document.addEventListener('click', e => { if (!dock.contains(e.target)) setOpen(false); });
+
+/* smooth scroll (Lenis); fails soft to native scroll if the CDN is blocked */
+const lenis = typeof Lenis !== 'undefined' ? new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t))}) : null;
+function raf(t) { lenis && lenis.raf(t); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+</script>
+</body>
+</html>
