@@ -16,11 +16,11 @@ a{color:inherit;text-decoration:none}
 button,input{font:inherit;color:inherit}
 button{border:0;background:none;cursor:pointer}
 
-/* nav (no logo) */
+/* nav */
 body>nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:50;height:40px;padding:0 20px;
   display:flex;align-items:center;gap:14px;border-radius:1000px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);font-size:13px;
   box-shadow:0 0 0 1px rgba(255,255,255,.9),0 .6px 1.5px -1.5px rgba(0,0,0,.17),0 2.3px 6px -3px rgba(0,0,0,.14),0 10px 26px -4.5px rgba(0,0,0,.02)}
-body>nav a{transition:opacity .2s}body>nav a:hover{opacity:.55}
+body>nav svg{width:20px;height:20px;margin-right:2px;display:block}body>nav a{transition:opacity .2s}body>nav a:hover{opacity:.55}
 body>nav a[aria-current="page"]{font-weight:500}
 
 /* header */
@@ -78,7 +78,8 @@ h1{font-weight:400;font-size:32px;line-height:38.4px;letter-spacing:-1.6px}
 .mark{position:relative;height:640px;max-width:1280px;margin:0 auto}
 .word{position:absolute;left:0;right:0;top:268px;text-align:center;font-family:'Ranchers',sans-serif;font-size:clamp(150px,33vw,420px);line-height:.8;letter-spacing:-.01em;white-space:nowrap}
 .mark img{position:absolute;pointer-events:none}
-.lace{left:50%;top:0;width:1139px;margin-left:-570px}
+.mark .lace{left:50%;top:0;width:1139px;margin-left:-570px;pointer-events:auto;transition:transform .7s}
+.lace:hover{transform:rotateY(45deg)}
 .fs1{left:123px;top:213px;width:209px;transform:rotate(-8deg)}
 .fs2{left:930px;top:425px;width:215px;transform:rotate(-6deg)}
 .finfo{max-width:1280px;margin:0 auto;padding:0 64px;display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
@@ -94,7 +95,7 @@ h1{font-weight:400;font-size:32px;line-height:38.4px;letter-spacing:-1.6px}
 
 @media (max-width:900px){
   .top,.grid{padding-left:20px;padding-right:20px}.grid{grid-template-columns:1fr 1fr}
-  .mark{height:380px}.word{top:120px}.lace{width:760px;margin-left:-380px}.fs1,.fs2{display:none}
+  .mark{height:380px}.word{top:120px}.mark .lace{width:760px;margin-left:-380px}.fs1,.fs2{display:none}
   .finfo{flex-direction:column;padding:0 20px}.fbar{padding:0 20px}.fbar::before{left:20px;right:20px}
 }
 @media (max-width:560px){.grid{grid-template-columns:1fr}.dock{width:min(250px,calc(100vw - 32px))}.dock.open{width:min(318px,calc(100vw - 32px))}}
@@ -103,6 +104,7 @@ h1{font-weight:400;font-size:32px;line-height:38.4px;letter-spacing:-1.6px}
 <body>
 
 <nav aria-label="Main">
+  <a href="index.html" aria-label="Sneaks home"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color:#005EFF"><path d="M50 8L8 85h18l8-16h32l8 16h18L50 8zm0 22l11 22H39L50 30z" fill="currentColor"/></svg></a>
   <a href="shoes.html" aria-current="page">Shop</a>
   <a href="index.html#approach">About</a>
   <a href="index.html#cats">Stores</a>
