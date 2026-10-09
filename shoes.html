@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sneaks — Full collection</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Ranchers&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <style>
 :root{--black:#000;--ink:#424242;--muted:#616161;--faint:#858585;--bg:#fff;--bg-soft:#F5F5F5;--line:#E3E3E3;--chip:#F0F0F0;--blue:#005EFF}
 *{margin:0;padding:0;box-sizing:border-box}
-html{background:var(--bg)}
+html{background:var(--bg);overflow-x:clip}
 body{font-family:'Inter Variable','Inter',sans-serif;color:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit;color:inherit}
@@ -74,7 +75,7 @@ h1{font-weight:400;font-size:32px;line-height:38.4px;letter-spacing:-1.6px}
 .chip:focus-visible,.reset:focus-visible,.tog:focus-visible,.chk input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 /* footer (same as home) */
-.foot{position:relative;background:#fff;padding-bottom:60px;margin-top:-60px}
+.foot{overflow-x:clip;position:relative;background:#fff;padding-bottom:60px;margin-top:-60px}
 .mark{position:relative;height:640px;max-width:1280px;margin:0 auto}
 .word{position:absolute;left:0;right:0;top:268px;text-align:center;font-family:'Ranchers',sans-serif;font-size:clamp(150px,33vw,420px);line-height:.8;letter-spacing:-.01em;white-space:nowrap}
 .mark img{position:absolute;pointer-events:none}
@@ -98,7 +99,7 @@ h1{font-weight:400;font-size:32px;line-height:38.4px;letter-spacing:-1.6px}
   .mark{height:380px}.word{top:120px}.mark .lace{width:760px;margin-left:-380px}.fs1,.fs2{display:none}
   .finfo{flex-direction:column;padding:0 20px}.fbar{padding:0 20px}.fbar::before{left:20px;right:20px}
 }
-@media (max-width:560px){.grid{grid-template-columns:1fr}.dock{width:min(250px,calc(100vw - 32px))}.dock.open{width:min(318px,calc(100vw - 32px))}}
+@media (max-width:560px){.word{font-size:28vw}.fbar{flex-wrap:wrap;gap:10px 16px}.grid{grid-template-columns:1fr}.dock{width:min(250px,calc(100vw - 32px))}.dock.open{width:min(318px,calc(100vw - 32px))}}
 </style>
 </head>
 <body>
